@@ -1,0 +1,15 @@
+<h1>Створення нового поста</h1>
+
+<% if @post.errors.any? %>
+<% @post.errors.full_messages.each do |msg| %>
+<div class="alert alert-danger"><%= msg %></div>
+<% end %>
+<% end %>
+
+<%= form_for :post, url: posts_path do |f| %>
+  <p>Назва посту</p>
+  <%= f.text_field(:title, {:class => 'form-control'}) %>
+  <p>Вміст</p>
+  <%= f.text_area(:body, {:class => 'form-control'}) %>
+  <p><%= f.submit({:class => 'btn btn-success'}) %></p>
+<% end %>
